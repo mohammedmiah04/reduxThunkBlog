@@ -1,11 +1,8 @@
-import jsonPlaceholder from "../apis/jsonPlaceHolder";
+import jsonPlaceholder from "../apis/jsonPlaceholder";
 
 //Action Creator
-export const fetchPosts = async () => {
-  const response = await jsonPlaceholder.get("/post");
+export const fetchPosts = () => async (dispatch) => {
+  const response = await jsonPlaceholder.get("/posts");
 
-  return {
-    type: "FETCH_POST",
-    payload: response,
-  };
+  dispatch({ type: "FETCH_POSTS", payload: response.data });
 };
